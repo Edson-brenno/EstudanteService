@@ -5,3 +5,12 @@ spring:
     active: dev
   config:
     import: optional:configserver:http://localhost:8888/
+
+resilience4j:
+  retry:
+    instances:
+      default:
+        - max-attempts: 5
+        - wait-duration:
+            1s
+        - enable-exponential-backoff: true
